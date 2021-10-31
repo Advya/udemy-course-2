@@ -28,9 +28,8 @@
       </div>
 
       <div class="form-group row justify-content-center">
-        <%= form.submit "Sign Up", class: "btn btn-outline-light btn-lg" %>
+        <%= form.submit(@author.new_record? ? "Sign Up" : "Update account", class: "btn btn-outline-light btn-lg") %>
       </div>
     <% end %>
-  </div>
-  <%= link_to '[ Already registered? -> Sign in ]', articles_path, class: "text-info" %>
+  </div> 
 </div>

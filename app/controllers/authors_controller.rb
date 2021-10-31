@@ -14,6 +14,20 @@ class AuthorsController < ApplicationController
 		end
 	end
 
+	def edit 
+		@author = Author.find(params[:id])
+	end
+
+	def update
+		@author = Author.find(params[:id])
+		if @author.update(user_params)
+			flash[:notice] = "Successfully updated"
+			redirect_to articles_path
+		else
+			render 'edit'
+		end
+	end
+
 
 
 	private
