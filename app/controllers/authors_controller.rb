@@ -1,9 +1,13 @@
 class AuthorsController < ApplicationController
 
 
+	def index
+		@authors = Author.paginate(page: params[:page], per_page: 5)
+	end
+
 	def show
 		@author = Author.find(params[:id])
-		@articles = @author.articles
+		@articles = @author.articles.paginate(page: params[:page], per_page: 5)
 	end
 
 	def new
@@ -28,7 +32,7 @@ class AuthorsController < ApplicationController
 		@author = Author.find(params[:id])
 		if @author.update(user_params)
 			flash[:notice] = "Successfully updated"
-			redirect_to articles_path
+			redirect_to @author
 		else
 			render 'edit'
 		end
