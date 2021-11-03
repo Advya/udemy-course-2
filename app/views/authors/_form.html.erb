@@ -28,7 +28,10 @@
       </div>
 
       <div class="form-group row justify-content-center">
-        <%= form.submit(@author.new_record? ? "Sign Up" : "Update account", class: "btn btn-outline-light btn-lg") %>
+        <%= form.submit(@author.new_record? ? "Sign Up" : "Update account", class: "btn btn-outline-light btn-lg ml-auto mr-0") %>
+        <% if logged_in? %>
+         <%= link_to "Delete account", author_path(current_author), class: "btn btn-outline-danger btn-lg mr-3 ml-auto", method: :delete, data: {confirm: "Are you sure?"} %>        
+        <% end %>
       </div>
     <% end %>
   </div> 

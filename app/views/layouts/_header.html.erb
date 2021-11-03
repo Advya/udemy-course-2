@@ -12,9 +12,11 @@
           <li class="nav-item">
             <a class="nav-link" href=<%= articles_path %>>Articles</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href=<%= new_article_path %>>New Article</a>
-          </li>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href=<%= new_article_path %>>Create New Article</a>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Dropdown
@@ -26,16 +28,37 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
+          <% if logged_in? %>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= "(Admin)" if current_author.admin? %> Profile [<%= current_author.authorname %>]
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "View your profile", author_path(current_author), class: "dropdown-item" %>
+              <%= link_to "Edit your profile", edit_author_path(current_author), class: "dropdown-item" %>
+            </div>
+          <% end %>
           
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href=<%= signup_path %> >Sign Up</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href=<%= login_path %> >Log In</a>
-          </li>
-        </ul>
+        <% if logged_in? %>
+          
+            <li class="nav-item active">
+              <%= link_to current_author.authorname, author_path(current_author), class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'LogOut', logout_path, class: "nav-link", method: :delete %>
+            </li>
+
+            <% else %>              
+              <li class="nav-item active">
+                <a class="nav-link" href=<%= login_path %> >Log In</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href=<%= signup_path %> >Sign Up</a>
+              </li>
+            <% end %>
+          </ul>
         
       </div>
     </nav>
