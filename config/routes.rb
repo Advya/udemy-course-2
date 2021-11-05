@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'signup' => 'authors#new'
   resources :authors, except: [:new]
+  resources :categories, except: [:destroy]
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+
 end
