@@ -1,24 +1,14 @@
-# README
+# Alpha blog app from udemy course
+https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+app listed on heroku 
+https://udemy-rails-course-no-errors.herokuapp.com/
 
-Things you may want to cover:
 
-* Ruby version
+So in this app we have Articles, Authors, Categories entities
 
-* System dependencies
+User can register as Author, create, show, edit and destroy his own articles. Only admin can edit and destroy every article.
 
-* Configuration
+There is many-to-many association with articles and categories.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can try this out: https://udemy-rails-course-no-errors.herokuapp.com/
